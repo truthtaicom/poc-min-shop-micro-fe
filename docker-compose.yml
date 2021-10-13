@@ -1,0 +1,39 @@
+version: '3.7'
+
+services:
+
+  app-container:
+    container_name: app-container
+    build:
+      context: ./container
+      dockerfile: Dockerfile.dev
+    ports:
+      - 3000:3000
+    depends_on:
+      - app-header
+      - app-product-list
+      - app-product-search
+
+  app-header:
+    container_name: app-header
+    build:
+      context: ./app-header
+      dockerfile: Dockerfile.dev
+    ports:
+      - 3001:3001
+
+  app-product-list:
+    container_name: app-product-list
+    build:
+      context: ./app-product-list
+      dockerfile: Dockerfile.dev
+    ports:
+      - 3002:3002
+
+  app-product-search:
+    container_name: app-product-search
+    build:
+      context: ./app-product-search
+      dockerfile: Dockerfile.dev
+    ports:
+      - 3003:3003
